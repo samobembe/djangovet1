@@ -7,6 +7,9 @@ class Owner(models.Model):
     last_name = models.CharField(max_length=30)
     phone = models.CharField(max_length=30)
 
+    def multipleOwner(self):
+        return self.patient_set.count() > 1
+
     def get_absolute_url(self):
         return '/owner/list'
 
