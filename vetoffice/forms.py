@@ -1,4 +1,5 @@
 from django import forms
+from django.forms import ModelForm
 from .models import Owner, Patient, Appointment
 
 # CRUD - Create
@@ -30,7 +31,12 @@ class PatientUpdateForm(forms.ModelForm):
         model = Patient
         fields = ('pet_name', 'animal_type', 'breed', 'age', 'owner')
 
+class DateInput(forms.DateInput):
+    input_type = 'date'
 class AppointmentUpdateForm(forms.ModelForm):
     class Meta:
         model = Appointment
         fields = ('patient', 'day', 'time')
+        widgets = {
+            'day': DateInput(),
+        }
