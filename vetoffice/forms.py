@@ -15,12 +15,16 @@ class PatientCreateForm(forms.ModelForm):
 
 class DateInput(forms.DateInput):
     input_type = 'date'
+
+class TimeInput(forms.TimeInput):
+    input_type = 'time'
 class AppointmentCreateForm(forms.ModelForm):
     class Meta:
         model = Appointment
         fields = ('patient', 'day', 'time')
         widgets = {
             'day': DateInput(),
+            'time': TimeInput()
         }
 
 #CRUD - Update
