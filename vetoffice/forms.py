@@ -13,10 +13,15 @@ class PatientCreateForm(forms.ModelForm):
         model = Patient
         fields = ('pet_name', 'animal_type', 'breed', 'age', 'owner')
 
+class DateInput(forms.DateInput):
+    input_type = 'date'
 class AppointmentCreateForm(forms.ModelForm):
     class Meta:
         model = Appointment
         fields = ('patient', 'day', 'time')
+        widgets = {
+            'day': DateInput(),
+        }
 
 #CRUD - Update
 class OwnerUpdateForm(forms.ModelForm):
